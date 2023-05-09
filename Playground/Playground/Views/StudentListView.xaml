@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.Views.StudentListView"
+             xmlns:searchHandlers = "clr-namespace:Playground.SearchHandlers"
+             xmlns:vm = "clr-namespace:Playground.ViewModels"
+             xmlns:models = "clr-namespace:Playground.Models"
+
+             Title="StudentListView">
+    <ScrollView Margin="20">
+    <!--<Shell.SearchHandler>
+        <searchHandlers:StudentSearchHandler
+            DisplayMemberName="Name"
+            Students="{x:Static vm:StudentListViewModel.Students}">
+            <searchHandlers:StudentSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="models:StudentModel">
+                    <Grid RowDefinitions="Auto" ColumnDefinitions="Auto">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="18"/>
+                    </Grid>
+
+                </DataTemplate>
+            </searchHandlers:StudentSearchHandler.ItemTemplate>
+
+        </searchHandlers:StudentSearchHandler>
+
+    </Shell.SearchHandler>-->
+    <StackLayout>
+    <Label x:Name="MyLabel" Text="Hello, .NET MAUI123123!" />
+
+            <StackLayout Margin="0,0,0,0">
+                <Border StrokeThickness="0" BackgroundColor="Beige"
+                    StrokeShape="RoundRectangle 20">
+                    <Grid RowDefinitions="90,*,Auto"
+                        ColumnDefinitions="90,*,90"
+                        HeightRequest="150">
+                        <CarouselView Grid.RowSpan="3"
+                                    Grid.ColumnSpan="3" IndicatorView="indicatorView" ItemsSource ="{Binding carouselItems}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate x:DataType="models:CarouselItem">
+                                    <Image Source="{Binding Images,Mode=TwoWay}" Aspect="Fill">
+                                    </Image>
+                                </DataTemplate>
+
+                            </CarouselView.ItemTemplate>
+                            <CarouselView.GestureRecognizers>
+
+                            </CarouselView.GestureRecognizers>
+                        </CarouselView>
+                        <IndicatorView x:Name="indicatorView"
+                                    IndicatorColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                                        Dark={StaticResource PrimaryColorDark}}"
+                                    SelectedIndicatorColor="LightGray"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="End"
+                                    Margin="10"
+                                    Grid.Column="1"
+                                    Grid.Row="2"/>
+                    </Grid>
+
+                </Border>
+            </StackLayout>
+        
+    <Button Text="goto" WidthRequest="300" HeightRequest="100" Command="{Binding GotoNextPageCommand}"/>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

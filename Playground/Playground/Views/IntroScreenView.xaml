@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Playground.Views.IntroScreenView"
+             xmlns:vm = "clr-namespace:Playground.ViewModels"
+             xmlns:models = "clr-namespace:Playground.Models"
+             x:DataType="vm:IntroScreenViewModel"
+             Title="IntroScreenView">
+    <StackLayout Margin="10">
+        <Border StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20">
+
+            <Grid RowDefinitions="90,*,Auto"
+                        ColumnDefinitions="90,*,90"
+                        HeightRequest="150">
+                <CarouselView Grid.RowSpan="3"
+                                    Grid.ColumnSpan="3" IndicatorView="indicatorView" ItemsSource="{Binding IntroScreens}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="models:IntroScreenModel">
+                            <Image Source="{Binding Images}" Aspect="AspectFill">
+                            </Image>
+
+                        </DataTemplate>
+
+                    </CarouselView.ItemTemplate>
+
+                </CarouselView>
+                                        <IndicatorView x:Name="indicatorView"
+                                    IndicatorColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                                        Dark={StaticResource PrimaryColorDark}}"
+                                    SelectedIndicatorColor="LightGray"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="End"
+                                    Margin="10"
+                                    Grid.Column="1"
+                                    Grid.Row="2"/>
+            </Grid>
+        </Border>
+    </StackLayout>
+
+</ContentPage>
